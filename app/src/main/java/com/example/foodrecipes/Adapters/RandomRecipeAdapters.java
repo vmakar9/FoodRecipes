@@ -42,6 +42,31 @@ public class RandomRecipeAdapters extends RecyclerView.Adapter<RandomRecipeViewH
         holder.textView_likes.setText(list.get(position).aggregateLikes+" Likes");
         holder.textView_servings.setText(list.get(position).servings+ " Servings");
         holder.textView_time.setText(list.get(position).readyInMinutes+ " Minutes");
+        if (list.get(position).isVegetarian()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Vegetarian");
+        }
+        if (list.get(position).isVegan()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Vegan");
+        }
+        if (list.get(position).isGlutenFree()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" GlutenFree");
+        }
+        if (list.get(position).isDairyFree()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" DairyFree");
+        }
+        if (list.get(position).isVeryHealthy()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Very Healthy");
+        }
+        if (list.get(position).isCheap()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Cheap");
+        }
+        if (list.get(position).isVeryPopular()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Very Popular");
+        }
+        if (list.get(position).isSustainable()){
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Sustainable");
+        }
+        holder.textView_tags_frees.setSelected(true);
         Picasso.get().load(list.get(position).image).into(holder.imageView_food);
 
         holder.random_list_container.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +85,7 @@ public class RandomRecipeAdapters extends RecyclerView.Adapter<RandomRecipeViewH
 
 class RandomRecipeViewHolder extends RecyclerView.ViewHolder{
     CardView random_list_container;
-    TextView textView_title, textView_servings,textView_likes,textView_time;
+    TextView textView_title, textView_servings,textView_likes,textView_time,textView_tags_frees,textView_tags_includes;
     ImageView imageView_food;
 
 
@@ -72,5 +97,7 @@ class RandomRecipeViewHolder extends RecyclerView.ViewHolder{
         textView_likes = itemView.findViewById(R.id.textView_likes);
         textView_time = itemView.findViewById(R.id.textView_time);
         imageView_food = itemView.findViewById(R.id.imageView_food);
+        textView_tags_frees = itemView.findViewById(R.id.textView_tags_frees);
+        textView_tags_includes = itemView.findViewById(R.id.textView_tags_includes);
     }
 }

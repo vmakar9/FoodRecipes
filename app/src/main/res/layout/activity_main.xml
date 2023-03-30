@@ -52,6 +52,7 @@
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_random"
         android:layout_margin="4dp"

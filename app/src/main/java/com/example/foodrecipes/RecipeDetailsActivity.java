@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +39,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     SimilarRecipeAdapter similarRecipeAdapter;
     InstructionAdapter instructionAdapter;
+    Button button_nutrition;
 
 
     @Override
@@ -57,6 +62,22 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         progressDialog.setTitle("Loading...");
         progressDialog.show();
 
+        button_nutrition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //https://api.spoonacular.com/recipes/1082038/nutritionWidget.png
+//                https://api.spoonacular.com/recipes/641166/nutritionLabel.png
+
+                final Dialog nutritionDialog = new Dialog(RecipeDetailsActivity.this, android.R.style.Theme_Light);
+                nutritionDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                nutritionDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                nutritionDialog.setContentView(R.layout.nutrition_dialog);
+                ImageView imageView = (ImageView) nutritionDialog.findViewById(R.id.imageView_nutrition);
+                Picasso.get().load("https://api.spoonacular.com/recipes/"+id+"/nutritionLabel.png?apiKey="+getString(R.string.api_key)).into(imageView);
+                nutritionDialog.show();
+            }
+        });
+
     }
 
     private void findViews(){
@@ -67,6 +88,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         recycler_meal_ingredients = findViewById(R.id.recycler_meal_ingredients);
         recycler_meal_similar = findViewById(R.id.recycler_meal_similar);
         recycler_meal_instructions = findViewById(R.id.recycler_meal_instructions);
+        button_nutrition = findViewById(R.id.button_nutrition);
     }
 
     private final RecipeDetailsListener recipeDetailsListener= new RecipeDetailsListener() {

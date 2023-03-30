@@ -39,4 +39,36 @@ public class Recipe {
     public ArrayList<AnalyzedInstruction> analyzedInstructions;
     public Object originalId;
     public String spoonacularSourceUrl;
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public boolean isVegan() {
+        return vegan;
+    }
+
+    public boolean isGlutenFree() {
+        return glutenFree;
+    }
+
+    public boolean isDairyFree() {
+        return dairyFree;
+    }
+
+    public boolean isVeryHealthy() {
+        return veryHealthy;
+    }
+
+    public boolean isCheap() {
+        return cheap;
+    }
+
+    public boolean isVeryPopular() {
+        return veryPopular;
+    }
+
+    public boolean isSustainable() {
+        return sustainable;
+    }
 }

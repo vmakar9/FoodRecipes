@@ -49,7 +49,7 @@ public class RandomRecipeAdapters extends RecyclerView.Adapter<RandomRecipeViewH
             holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" Vegan");
         }
         if (list.get(position).isGlutenFree()){
-            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" GlutenFree");
+            holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" GlutenFree".substring(0,1));
         }
         if (list.get(position).isDairyFree()){
             holder.textView_tags_frees.setText(holder.textView_tags_frees.getText()+" DairyFree");
